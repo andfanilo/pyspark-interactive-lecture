@@ -1,0 +1,10 @@
+name: pyspark-interactive-lecture
+channels:
+- damianavila82
+- conda-forge
+- defaults
+dependencies:
+- python=3.5
+- rise=5
+- pip:
+  - pyspark==2.2.0.post0
