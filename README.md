@@ -19,13 +19,15 @@ conda env create -f environment.yml
 activate pyspark-interactive-lecture
 ```
 
-After installation, you should get access to `invoke`, you should be able to see all defined tasks for the project with `invoke -l` 
+After installation, you should get access to `invoke` in a GNU terminal, and be able to see all defined tasks for the project with `invoke -l`.
+
+Documentation on a task with `invoke <task> -h`.
 
 ## Run notebook for editing
 
-`invoke notebook`
+Run a Jupyter Notebook session : `invoke notebook`
 
-Inside the notebook, launch the slideshow with `Enter/Exit Live Reveal Slideshow` button.
+If you need to pass a string of arguments : `invoke notebook -a "--port=9000"`
 
 ## Export slidedeck
 
@@ -33,7 +35,7 @@ Inside the notebook, launch the slideshow with `Enter/Exit Live Reveal Slideshow
 
 `invoke nbconvert` will convert the notebook to a HTML file inside the `build/` directory.
 
-`invoke nbconvert --serve` to launch With a local server for serving the slides as a Reveal.js slideshow.
+`invoke nbconvert --serve` to launch the HTML file with a local server for serving the slides as a Reveal.js slideshow.
 
 ### decktape
 
