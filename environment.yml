@@ -7,4 +7,5 @@ dependencies:
 - python=3.5
 - rise=5
 - pip:
+  - invoke==0.22.0
   - pyspark==2.2.0.post0

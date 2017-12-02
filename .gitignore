@@ -1,6 +1,7 @@
 # Project specific
 
 *.pdf
+build/
 
 # Created by https://www.gitignore.io/api/python
 

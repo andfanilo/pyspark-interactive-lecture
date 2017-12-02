@@ -10,7 +10,7 @@ Interactive Spark lecture using RISE and PySpark.
 
 The following guide has Windows users in mind.
 
-## Install
+## Install development environment
 
 We provide you with a `environment.yml` which Anaconda can use to create a Python environment named `pyspark-interactive-lecture`.
 
@@ -19,11 +19,11 @@ conda env create -f environment.yml
 activate pyspark-interactive-lecture
 ```
 
-To deactivate your environment, `deactivate`
+After installation, you should get access to `invoke`, you should be able to see all defined tasks for the project with `invoke -l` 
 
-## Run
+## Run notebook for editing
 
-`jupyter notebook`
+`invoke notebook`
 
 Inside the notebook, launch the slideshow with `Enter/Exit Live Reveal Slideshow` button.
 
@@ -31,7 +31,9 @@ Inside the notebook, launch the slideshow with `Enter/Exit Live Reveal Slideshow
 
 ### nbconvert
 
-To launch With a local server for serving the slides : `jupyter nbconvert --to slides lecture.ipynb --post serve`
+`invoke nbconvert` will convert the notebook to a HTML file inside the `build/` directory.
+
+`invoke nbconvert --serve` to launch With a local server for serving the slides as a Reveal.js slideshow.
 
 ### decktape
 
@@ -40,7 +42,6 @@ To launch With a local server for serving the slides : `jupyter nbconvert --to s
 Install decktape :
 
 ```
-set PYTHON=<path/to/python2>
 npm install
 ```
 
