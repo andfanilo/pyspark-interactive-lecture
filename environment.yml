@@ -5,7 +5,10 @@ channels:
 - defaults
 dependencies:
 - python=3.5
+- requests
 - rise=5
 - pip:
   - invoke==0.22.0
+  - patool
+  - path.py
   - pyspark==2.2.0.post0

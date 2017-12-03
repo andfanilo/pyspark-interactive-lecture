@@ -1,4 +1,7 @@
 from invoke import task
+import patoolib
+from path import Path
+import requests
 
 
 @task
@@ -8,12 +11,32 @@ def clean(ctx):
 
 
 @task
-def notebook(ctx, args=None):
-    """Launch jupyter notebook to edit notebook files. Add a string of arguments through the -a/--args flag"""
+def downloadSpark(ctx):
+    """Download Spark to bin/ directory"""
+    bin_folder = Path('bin/')
+    bin_folder.mkdir_p()
+
+    spark_archive = bin_folder / 'spark.tgz'
+    spark_folder = bin_folder / 'spark'
+
+    if not (spark_archive.exists() | spark_folder.exists()):
+        url = 'http://apache.mediamirrors.org/spark/spark-2.2.0/spark-2.2.0-bin-hadoop2.7.tgz'
+        r = requests.get(url)
+        with open(spark_archive, 'wb') as f:
+            f.write(r.content)
+
+    if not spark_folder.exists():
+        patoolib.extract_archive(spark_archive, outdir=spark_folder)
+        spark_archive.rm_p()
+
+
+@task
+def notebook(ctx, args=None, spark_home=Path.getcwd() / 'bin/spark'):
+    """Launch jupyter notebook to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark"""
     cmd = ['jupyter notebook']
     if args:
         cmd.append(args)
-    ctx.run(' '.join(cmd))
+    ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
 
 
 @task
