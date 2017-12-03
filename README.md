@@ -12,6 +12,8 @@ The following guide has Windows users in mind.
 
 ## Install development environment
 
+### Python
+
 We provide you with a `environment.yml` which Anaconda can use to create a Python environment named `pyspark-interactive-lecture`.
 
 ```
@@ -22,6 +24,14 @@ activate pyspark-interactive-lecture
 After installation, you should get access to `invoke` in a GNU terminal, and be able to see all defined tasks for the project with `invoke -l`.
 
 Documentation on a task with `invoke <task> -h`.
+
+### Node
+
+If you wish to use decktape for exporting your slides as a Reveal.js slidedeck with `decktape`, you need to prepare your environment. [Node.js + npm](https://nodejs.org/) is required for the following.
+
+```
+npm install
+```
 
 ## Download Spark
 
@@ -47,20 +57,7 @@ The invoke command will automatically send `bin/spark` as the `SPARK_HOME` envir
 
 ### decktape
 
-[Node.js + npm](https://nodejs.org/) is required to export the RISE slides into a PDF.
-
-Install decktape :
-
-```
-npm install
-```
-
-Then launch the Jupyter notebook and export script.
-
-```
-jupyter notebook --NotebookApp.token=''
-npm run export
-```
+Run the following command to run decktape on a background Jupyter notebook: `invoke decktape`
 
 NB : [There is a fix to apply beforehand in RISE 5.1 + Decktape 2.6+](https://github.com/astefanutti/decktape/issues/110#issuecomment-345217070) :
 

@@ -11,4 +11,5 @@ dependencies:
   - invoke==0.22.0
   - patool
   - path.py
+  - psutil
   - pyspark==2.2.0.post0

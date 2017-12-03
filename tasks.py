@@ -1,7 +1,10 @@
 from invoke import task
+import os
 import patoolib
 from path import Path
+import psutil
 import requests
+import time
 
 
 @task
@@ -53,4 +56,14 @@ def nbconvert(ctx, serve=False):
 @task
 def decktape(ctx):
     """Specialized export of RISE notebook to a PDF file under the build/ directory"""
-    pass
+    build_folder = Path('build/')
+    build_folder.mkdir_p()
+
+    jupyter_proc = psutil.Popen(['jupyter', 'notebook' , '--NotebookApp.token=""', '--no-browser'])
+    time.sleep(10)
+    ctx.run('npm run export')
+    
+    for child in jupyter_proc.children(recursive=True):
+        child.terminate()
+    jupyter_proc.terminate()
+    jupyter_proc.wait()
