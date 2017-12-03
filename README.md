@@ -4,9 +4,9 @@ Interactive Spark lecture using RISE and PySpark.
 
 ## Prerequisites
 
-* Python 3.5. 
+* Python 3.5+. 
 * (Optional) Anaconda. I usually use Anaconda for managing my Python environments, which explains why the guide uses conda commands in the following.
-* Spark 2.2.0 referenced inside a `SPARK_HOME` environment variable.
+* (Optional) Spark 2.2.0 referenced inside a `SPARK_HOME` environment variable.
 
 The following guide has Windows users in mind.
 
@@ -23,11 +23,19 @@ After installation, you should get access to `invoke` in a GNU terminal, and be 
 
 Documentation on a task with `invoke <task> -h`.
 
+## Download Spark
+
+We try to use Spark inside `bin/spark` so we have provided with a task for downloading and extracting the archive : `invoke downloadSpark`.
+
+Else you can just download and extract the archive by end.
+
 ## Run notebook for editing
 
-Run a Jupyter Notebook session : `invoke notebook`
+Run a Jupyter Notebook session : `invoke notebook`.
 
 If you need to pass a string of arguments : `invoke notebook -a "--port=9000"`
+
+The invoke command will automatically send `bin/spark` as the `SPARK_HOME` environment variablen so you need to have downloaded Spark inside `bin/spark` before, which is normally easily done in the previous section. If you wish to change that use the `--spark_home` flag : `invoke notebook -s path/to/spark.`
 
 ## Export slidedeck
 
