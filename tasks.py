@@ -34,27 +34,31 @@ def downloadSpark(ctx):
 
 
 @task
-def notebook(ctx, args=None, spark_home=Path.getcwd() / 'bin/spark'):
-    """Launch jupyter notebook to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark. Ideal for modifying pyspark.ipynb"""
+def notebook(ctx, notebook_dir='notebooks', spark_home=Path.getcwd() / 'bin/spark'):
+    """Launch jupyter notebook to edit notebook files. Ideal for modifying pyspark.ipynb"""
     cmd = ['jupyter notebook']
-    if args:
-        cmd.append(args)
+    cmd.append('--notebook-dir={}'.format(notebook_dir))
     ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
 
 
 @task
-def lab(ctx, args=None, spark_home=Path.getcwd() / 'bin/spark'):
-    """Launch jupyter lab to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark. Ideal for modifying lecture.ipynb"""
+def lab(ctx, notebook_dir='notebooks', spark_home=Path.getcwd() / 'bin/spark'):
+    """Launch jupyter lab to edit notebook files. Ideal for modifying lecture.ipynb"""
     cmd = ['jupyter lab']
-    if args:
-        cmd.append(args)
+    cmd.append('--notebook-dir={}'.format(notebook_dir))
     ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
 
 
-@task
+@task(help={
+    'serve': 'serve file through a local http server',
+    'font_awesome_url': 'url to font-awesome',
+    'reveal_url_prefix': 'url to reveal.js',
+    'theme': 'reveal.js theme to use',
+    'transition': 'reveal.js transition to use'
+    })
 def nbconvert(ctx, serve=False, font_awesome_url='https://use.fontawesome.com/releases/v5.0.0/css/all.css', reveal_url_prefix='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0', theme='simple', transition='fade'):
     """
-    Convert your lecture notebook to a HTML file, stored in the static/ directory. With -s/--serve argument, the HTML file is served by a local server as a Reveal.js slideshow.
+    Convert your lecture notebook to a HTML file, stored in the static/ directory.
     """
     cmd = ['jupyter nbconvert'] 
     cmd.append('--to slides')
@@ -65,7 +69,7 @@ def nbconvert(ctx, serve=False, font_awesome_url='https://use.fontawesome.com/re
     cmd.append('--output-dir=static/')
     cmd.append('--output=index')
     cmd.append('--template=pyspark-interactive-lecture.tpl')
-    cmd.append('lecture.ipynb')
+    cmd.append('notebooks/lecture.ipynb')
     if serve:
         cmd.append('--post serve')
         cmd.append('--ServePostProcessor.reveal_cdn={}'.format(reveal_url_prefix))
@@ -78,7 +82,7 @@ def decktape(ctx):
     build_folder = Path('build/')
     build_folder.mkdir_p()
 
-    jupyter_proc = psutil.Popen(['jupyter', 'notebook' , '--NotebookApp.token=""', '--no-browser'])
+    jupyter_proc = psutil.Popen(['jupyter', 'notebook' , '--NotebookApp.token=""', '--notebook-dir="notebooks"', '--no-browser'])
     time.sleep(10)
     ctx.run('npm run export')
     
