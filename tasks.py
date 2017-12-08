@@ -55,7 +55,7 @@ def nbconvert(ctx, serve=False):
     """
     Convert your lecture notebook to a HTML file, stored in the build/ directory. With -s/--serve argument, the HTML file is served by a local server as a Reveal.js slideshow.
     """
-    cmd = ['jupyter nbconvert --to slides lecture.ipynb --output-dir=build/ --template=slides_wide.tpl']
+    cmd = ['jupyter nbconvert --to slides --SlidesExporter.reveal_url_prefix="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/" --output-dir=build/ lecture.ipynb']
     if serve:
         cmd.append('--post serve')
     ctx.run(' '.join(cmd))

@@ -56,6 +56,12 @@ jupyter notebook --NotebookApp.token="" --no-browser
 npm run export
 ```
 
+## Exporting plain notebooks with nbconvert
+
+Today I discovered from [this issue](https://github.com/lse-st445/lectures/issues/1) that you needed to point to a revealjs library for correct formatting of the output. For now I'm using CDN but in the case of offline usage, I'll try to put a local revealjs.
+
+And then maybe I'll get custom css to work with nbconvert to put background images, and then I'll have 2 presentations, one for general introduction and one for interactive pyspark :) .
+
 ## Automating tasks with Invoke
 
 ## Experimenting with Pyspark
