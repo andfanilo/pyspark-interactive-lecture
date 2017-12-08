@@ -33,6 +33,21 @@ If you wish to use decktape for exporting your slides as a Reveal.js slidedeck w
 npm install
 ```
 
+## Invoke task list
+
+```
+$ invoke -l
+Available tasks:
+
+  clean           Clean build directory
+  decktape        Specialized export of RISE notebook to a PDF file under the build/ directory
+  downloadSpark   Download Spark to bin/ directory
+  lab             Launch jupyter lab to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark
+  nbconvert       Convert your lecture notebook to a HTML file, stored in the build/ directory. With -s/--serve argument, the HTML file is served by a local server as
+                  a Reveal.js slideshow.
+  notebook        Launch jupyter notebook to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark
+```
+
 ## Download Spark
 
 We try to use Spark inside `bin/spark` so we have provided with a task for downloading and extracting the archive : `invoke downloadSpark`.
@@ -51,7 +66,7 @@ The invoke command will automatically send `bin/spark` as the `SPARK_HOME` envir
 
 ### nbconvert
 
-`invoke nbconvert` will convert the notebook to a HTML file inside the `build/` directory.
+`invoke nbconvert` will convert the notebook to a HTML file inside the `build/` directory. You can then visualize them with `python -m http.server`.
 
 `invoke nbconvert --serve` to launch the HTML file with a local server for serving the slides as a Reveal.js slideshow.
 

@@ -4,11 +4,12 @@ channels:
 - conda-forge
 - defaults
 dependencies:
-- python=3.5
+- jupyterlab
+- python=3
 - requests
 - rise=5
 - pip:
-  - invoke==0.22.0
+  - invoke
   - patool
   - path.py
   - psutil

@@ -41,13 +41,21 @@ def notebook(ctx, args=None, spark_home=Path.getcwd() / 'bin/spark'):
         cmd.append(args)
     ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
 
+@task
+def lab(ctx, args=None, spark_home=Path.getcwd() / 'bin/spark'):
+    """Launch jupyter lab to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark"""
+    cmd = ['jupyter lab']
+    if args:
+        cmd.append(args)
+    ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
+
 
 @task
 def nbconvert(ctx, serve=False):
     """
     Convert your lecture notebook to a HTML file, stored in the build/ directory. With -s/--serve argument, the HTML file is served by a local server as a Reveal.js slideshow.
     """
-    cmd = ['jupyter nbconvert --to slides lecture.ipynb --output-dir=build/']
+    cmd = ['jupyter nbconvert --to slides lecture.ipynb --output-dir=build/ --template=slides_wide.tpl']
     if serve:
         cmd.append('--post serve')
     ctx.run(' '.join(cmd))
