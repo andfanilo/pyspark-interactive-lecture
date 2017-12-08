@@ -1,0 +1,16 @@
+.reveal .test {
+	background-color: purple;
+}
+
+.reveal .test .text_cell_render {
+	font-size: 48px;
+}
+
+.reveal .hero {
+	background: url('../img/hero.jpg') no-repeat 50% 50%;
+	background-size: cover;
+}
+
+.reveal .hero .text_cell_render {
+	color: white;
+}

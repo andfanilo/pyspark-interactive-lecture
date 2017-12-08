@@ -1,7 +1,6 @@
 # Project specific
 
 *.pdf
-build/
 bin/
 
 # Created by https://www.gitignore.io/api/python

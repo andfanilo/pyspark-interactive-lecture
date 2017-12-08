@@ -1,6 +1,11 @@
-# Interactive pyspark lecture
+# Pyspark lecture
 
 Interactive Spark lecture using RISE and PySpark.
+
+Will consist of two parts:
+
+* A general introduction to data, Jupyter notebook and Spark, in a static HTML file generated from a notebook.
+* A RISE powered notebook for interactive PySpark.
 
 ## Prerequisites
 
@@ -66,7 +71,24 @@ The invoke command will automatically send `bin/spark` as the `SPARK_HOME` envir
 
 ### nbconvert
 
-`invoke nbconvert` will convert the notebook to a HTML file inside the `build/` directory. You can then visualize them with `python -m http.server`.
+We use a personalized nbconvert template to generate a correct Reveal.js HTML file from the notebook file.
+
+```
+$ invoke nbconvert -h
+Usage: inv[oke] [--core-opts] nbconvert [--options] [other tasks here ...]
+
+Docstring:
+  Convert your lecture notebook to a HTML file, stored in the src/ directory. With -s/--serve argument, the HTML file is served by a local server as a Reveal.js slideshow.
+
+Options:
+  -a STRING, --transition=STRING
+  -f STRING, --font-awesome-url=STRING
+  -r STRING, --reveal-url-prefix=STRING
+  -s, --serve
+  -t STRING, --theme=STRING
+```
+
+`invoke nbconvert` will convert the notebook to a HTML file inside the `static/` directory. You can then visualize them by double-clicking on the file, or with `python -m http.server`.
 
 `invoke nbconvert --serve` to launch the HTML file with a local server for serving the slides as a Reveal.js slideshow.
 

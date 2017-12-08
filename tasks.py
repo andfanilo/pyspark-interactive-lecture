@@ -35,15 +35,16 @@ def downloadSpark(ctx):
 
 @task
 def notebook(ctx, args=None, spark_home=Path.getcwd() / 'bin/spark'):
-    """Launch jupyter notebook to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark"""
+    """Launch jupyter notebook to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark. Ideal for modifying pyspark.ipynb"""
     cmd = ['jupyter notebook']
     if args:
         cmd.append(args)
     ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
 
+
 @task
 def lab(ctx, args=None, spark_home=Path.getcwd() / 'bin/spark'):
-    """Launch jupyter lab to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark"""
+    """Launch jupyter lab to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark. Ideal for modifying lecture.ipynb"""
     cmd = ['jupyter lab']
     if args:
         cmd.append(args)
@@ -51,18 +52,23 @@ def lab(ctx, args=None, spark_home=Path.getcwd() / 'bin/spark'):
 
 
 @task
-def nbconvert(ctx, serve=False):
+def nbconvert(ctx, serve=False, font_awesome_url='https://use.fontawesome.com/releases/v5.0.0/css/all.css', reveal_url_prefix='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0', theme='simple', transition='fade'):
     """
-    Convert your lecture notebook to a HTML file, stored in the build/ directory. With -s/--serve argument, the HTML file is served by a local server as a Reveal.js slideshow.
+    Convert your lecture notebook to a HTML file, stored in the static/ directory. With -s/--serve argument, the HTML file is served by a local server as a Reveal.js slideshow.
     """
     cmd = ['jupyter nbconvert'] 
     cmd.append('--to slides')
-    cmd.append('--SlidesExporter.reveal_url_prefix="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/"')
-    cmd.append('--output-dir=build/')
+    cmd.append('--SlidesExporter.font_awesome_url={}'.format(font_awesome_url))
+    cmd.append('--SlidesExporter.reveal_url_prefix={}'.format(reveal_url_prefix))
+    cmd.append('--SlidesExporter.reveal_theme={}'.format(theme))
+    cmd.append('--SlidesExporter.reveal_transition={}'.format(transition))
+    cmd.append('--output-dir=static/')
+    cmd.append('--output=index')
     cmd.append('--template=pyspark-interactive-lecture.tpl')
     cmd.append('lecture.ipynb')
     if serve:
         cmd.append('--post serve')
+        cmd.append('--ServePostProcessor.reveal_cdn={}'.format(reveal_url_prefix))
     ctx.run(' '.join(cmd))
 
 

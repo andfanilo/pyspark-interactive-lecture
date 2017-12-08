@@ -56,13 +56,17 @@ jupyter notebook --NotebookApp.token="" --no-browser
 npm run export
 ```
 
+## Automating tasks with Invoke
+
 ## Exporting plain notebooks with nbconvert
 
 Today I discovered from [this issue](https://github.com/lse-st445/lectures/issues/1) that you needed to point to a revealjs library for correct formatting of the output. For now I'm using CDN but in the case of offline usage, I'll try to put a local revealjs.
 
 And then maybe I'll get custom css to work with nbconvert to put background images, and then I'll have 2 presentations, one for general introduction and one for interactive pyspark :) .
 
-## Automating tasks with Invoke
+## External CSS per slide
+
+I downloaded and modified nbconvert `slides_reveal.tpl` template to integrate a cell metadata tag to a custom CSS class. With that I can edit the color of my slide background with an external CSS file \o/. I can even access components under that class, so I can customize any element inside the slide.
 
 ## Experimenting with Pyspark
 
