@@ -69,7 +69,7 @@ def nbconvert(ctx, serve=False, font_awesome_url='https://use.fontawesome.com/re
     cmd.append('--output-dir=static/')
     cmd.append('--output=index')
     cmd.append('--template=pyspark-interactive-lecture.tpl')
-    cmd.append('notebooks/lecture.ipynb')
+    cmd.append('notebooks/pyspark.ipynb')
     if serve:
         cmd.append('--post serve')
         cmd.append('--ServePostProcessor.reveal_cdn={}'.format(reveal_url_prefix))

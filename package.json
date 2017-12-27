@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "decktape export for RISE Spark lecture",
   "scripts": {
-    "export": "decktape rise http://localhost:8888/notebooks/lecture.ipynb build/lecture.pdf"
+    "export": "decktape rise http://localhost:8888/notebooks/pyspark.ipynb build/pyspark.pdf"
   },
   "dependencies": {
     "decktape": "^2.6.1"
