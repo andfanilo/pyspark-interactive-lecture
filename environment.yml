@@ -5,6 +5,7 @@ channels:
 - defaults
 dependencies:
 - jupyterlab
+- numpy
 - python=3
 - requests
 - rise=5

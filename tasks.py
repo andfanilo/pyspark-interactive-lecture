@@ -41,14 +41,6 @@ def notebook(ctx, notebook_dir='notebooks', spark_home=Path.getcwd() / 'bin/spar
     ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
 
 
-@task
-def lab(ctx, notebook_dir='notebooks', spark_home=Path.getcwd() / 'bin/spark'):
-    """Launch jupyter lab to edit notebook files. Ideal for modifying lecture.ipynb"""
-    cmd = ['jupyter lab']
-    cmd.append('--notebook-dir={}'.format(notebook_dir))
-    ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
-
-
 @task(help={
     'serve': 'serve file through a local http server',
     'font_awesome_url': 'url to font-awesome',
