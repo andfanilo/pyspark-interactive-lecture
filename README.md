@@ -59,6 +59,12 @@ We try to use Spark inside `bin/spark` so we have provided with a task for downl
 
 Else you can just download and extract the archive by end.
 
+## Configure Spark
+
+In `conf/log4j.properties`, set `log4j.rootCategory=WARN, console`.
+
+In `conf/spark-defaults.conf`, set `spark.sql.shuffle.partitions   4`
+
 ## Run notebook for editing
 
 Run a Jupyter Notebook session : `invoke notebook`.

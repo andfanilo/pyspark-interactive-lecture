@@ -9,8 +9,9 @@ import time
 
 @task
 def clean(ctx):
-    """Clean build directory"""
+    """Clean irrelevant directories"""
     ctx.run('rm -rf build/')
+    # TODO : remove all spark-warehouse, __pycache__ and .ipynb_checkpoint
 
 
 @task
@@ -38,6 +39,16 @@ def notebook(ctx, notebook_dir='notebooks', spark_home=Path.getcwd() / 'bin/spar
     """Launch jupyter notebook to edit notebook files. Ideal for modifying pyspark.ipynb"""
     cmd = ['jupyter notebook']
     cmd.append('--notebook-dir={}'.format(notebook_dir))
+    ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
+
+
+@task
+def launchSparkStreaming(ctx, spark_home=Path.getcwd() / 'bin/spark', host='localhost', port='9999'):
+    """Launch Spark Streaming structured_network_wordcount.py example"""
+    cmd = [spark_home / 'bin/spark-submit']
+    cmd.append(spark_home / 'examples\src\main\python\sql\streaming\structured_network_wordcount.py')
+    cmd.append(host)
+    cmd.append(port)
     ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
 
 

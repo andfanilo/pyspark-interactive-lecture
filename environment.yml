@@ -11,6 +11,7 @@ dependencies:
 - rise=5
 - pip:
   - invoke
+  - nclib
   - patool
   - path.py
   - psutil
