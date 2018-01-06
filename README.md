@@ -63,7 +63,11 @@ Else you can just download and extract the archive by end.
 
 In `conf/log4j.properties`, set `log4j.rootCategory=WARN, console`.
 
-In `conf/spark-defaults.conf`, set `spark.sql.shuffle.partitions   4`
+In `conf/spark-defaults.conf`, set 
+
+```
+spark.sql.shuffle.partitions   4
+```
 
 ## Run notebook for editing
 
