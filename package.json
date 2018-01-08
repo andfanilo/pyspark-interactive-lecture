@@ -6,6 +6,6 @@
     "export": "decktape rise http://localhost:8888/notebooks/pyspark.ipynb build/pyspark.pdf"
   },
   "dependencies": {
-    "decktape": "^2.6.1"
+    "decktape": "^2.7.0"
   }
 }
