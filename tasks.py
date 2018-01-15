@@ -18,7 +18,6 @@ def notebook(ctx, notebook_dir=Path.getcwd() / 'notebooks'):
     """Launch jupyter notebook to edit notebook files. Ideal for modifying pyspark.ipynb"""
     cmd = ['jupyter notebook']
     cmd.append('--notebook-dir={}'.format(notebook_dir))
-    print(' '.join(cmd))
     ctx.run(' '.join(cmd))
 
 
