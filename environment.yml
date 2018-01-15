@@ -4,15 +4,15 @@ channels:
 - conda-forge
 - defaults
 dependencies:
+- invoke
 - jupyterlab
 - numpy
+- path.py
+- psutil
+- pyspark
 - python=3
 - requests
 - rise=5
 - pip:
-  - invoke
   - nclib
-  - patool
-  - path.py
-  - psutil
-  - pyspark==2.2.0.post0
+  

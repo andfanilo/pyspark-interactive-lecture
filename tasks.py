@@ -1,6 +1,5 @@
 from invoke import task
 import os
-import patoolib
 from path import Path
 import psutil
 import requests
@@ -15,31 +14,12 @@ def clean(ctx):
 
 
 @task
-def downloadSpark(ctx):
-    """Download Spark to bin/ directory"""
-    bin_folder = Path('bin/')
-    bin_folder.mkdir_p()
-
-    spark_archive = bin_folder / 'spark.tgz'
-    spark_folder = bin_folder / 'spark'
-
-    if not (spark_archive.exists() | spark_folder.exists()):
-        url = 'http://apache.mediamirrors.org/spark/spark-2.2.0/spark-2.2.0-bin-hadoop2.7.tgz'
-        r = requests.get(url)
-        with open(spark_archive, 'wb') as f:
-            f.write(r.content)
-
-    if not spark_folder.exists():
-        patoolib.extract_archive(spark_archive, outdir=spark_folder)
-        spark_archive.rm_p()
-
-
-@task
-def notebook(ctx, notebook_dir='notebooks', spark_home=Path.getcwd() / 'bin/spark'):
+def notebook(ctx, notebook_dir=Path.getcwd() / 'notebooks'):
     """Launch jupyter notebook to edit notebook files. Ideal for modifying pyspark.ipynb"""
     cmd = ['jupyter notebook']
     cmd.append('--notebook-dir={}'.format(notebook_dir))
-    ctx.run(' '.join(cmd), env={'SPARK_HOME': spark_home})
+    print(' '.join(cmd))
+    ctx.run(' '.join(cmd))
 
 
 @task

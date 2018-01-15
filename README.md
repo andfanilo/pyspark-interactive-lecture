@@ -2,16 +2,11 @@
 
 Interactive Spark lecture using RISE and PySpark.
 
-Will consist of two parts:
-
-* A general introduction to data, Jupyter notebook and Spark, in a static HTML file generated from a notebook.
-* A RISE powered notebook for interactive PySpark.
-
 ## Prerequisites
 
 * Python 3.5+. 
 * (Optional) Anaconda. I usually use Anaconda for managing my Python environments, which explains why the guide uses conda commands in the following.
-* (Optional) Spark 2.2.0 referenced inside a `SPARK_HOME` environment variable.
+* (Optional) Spark 2+ referenced inside a `SPARK_HOME` environment variable for Spark Streaming.
 
 The following guide has Windows users in mind.
 
@@ -46,7 +41,6 @@ Available tasks:
 
   clean           Clean build directory
   decktape        Specialized export of RISE notebook to a PDF file under the build/ directory
-  downloadSpark   Download Spark to bin/ directory
   lab             Launch jupyter lab to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark
   nbconvert       Convert your lecture notebook to a HTML file, stored in the build/ directory. With -s/--serve argument, the HTML file is served by a local server as
                   a Reveal.js slideshow.
@@ -55,9 +49,7 @@ Available tasks:
 
 ## Download Spark
 
-We try to use Spark inside `bin/spark` so we have provided with a task for downloading and extracting the archive : `invoke downloadSpark`.
-
-Else you can just download and extract the archive by end.
+Download Spark and unzip it in `bin/spark`.
 
 ## Configure Spark
 
