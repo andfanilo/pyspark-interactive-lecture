@@ -36,7 +36,7 @@ npm install
 
 This section is needed if you plan to use native Spark Streaming.
 
-Download Spark and unzip it in `bin/spark`.
+Download Spark with `invoke downloadSpark`, this will download the archive in `bin/` then uncompress it in `bin/spark`.
 
 In `conf/log4j.properties`, set `log4j.rootCategory=WARN, console`.
 
@@ -52,12 +52,12 @@ spark.sql.shuffle.partitions   4
 $ invoke -l
 Available tasks:
 
-  clean           Clean build directory
-  decktape        Specialized export of RISE notebook to a PDF file under the build/ directory
-  lab             Launch jupyter lab to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark
-  nbconvert       Convert your lecture notebook to a HTML file, stored in the build/ directory. With -s/--serve argument, the HTML file is served by a local server as
-                  a Reveal.js slideshow.
-  notebook        Launch jupyter notebook to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark
+  clean                  Clean irrelevant directories
+  decktape               Specialized export of RISE notebook to a PDF file under the build/ directory
+  downloadSpark          Download Spark archive in bin/
+  launchSparkStreaming   Launch Spark Streaming structured_network_wordcount.py example
+  nbconvert              Convert your lecture notebook to a HTML file, stored in the static/ directory.
+  notebook               Launch jupyter notebook to edit notebook files. Ideal for modifying pyspark.ipynb
 ```
 
 ## Run notebook for editing

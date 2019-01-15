@@ -2,15 +2,24 @@ from invoke import task
 import os
 from path import Path
 import psutil
-import requests
 import time
+import wget
 
 
 @task
 def clean(ctx):
-    """Clean irrelevant directories"""
+    """Clean bin/ and build/ directories"""
+    ctx.run('rm -rf bin/')
     ctx.run('rm -rf build/')
     # TODO : remove all spark-warehouse, __pycache__ and .ipynb_checkpoint
+
+
+@task
+def downloadSpark(ctx, url='https://archive.apache.org/dist/spark/spark-2.3.2/spark-2.3.2-bin-without-hadoop.tgz'):
+    """Download Spark archive in bin/"""
+    bin_folder = Path('bin/')
+    bin_folder.mkdir_p()
+    wget.download(url, out=Path.getcwd() / bin_folder)
 
 
 @task
