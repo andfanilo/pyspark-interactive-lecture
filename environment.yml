@@ -1,18 +1,16 @@
 name: pyspark-interactive-lecture
 channels:
-- damianavila82
-- conda-forge
-- defaults
+  - defaults
+  - conda-forge
 dependencies:
-- invoke
-- jupyterlab
-- numpy
-- path.py
-- psutil
-- pyspark
-- python=3
-- requests
-- rise=5
-- pip:
-  - nclib
-  
+  - invoke
+  - jupyter
+  - numpy
+  - path.py
+  - psutil
+  - pyspark=2.3
+  - python=3.6
+  - requests
+  - rise=5
+  - pip:
+      - nclib

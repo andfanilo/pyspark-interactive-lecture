@@ -4,9 +4,8 @@ Interactive Spark lecture using RISE and PySpark.
 
 ## Prerequisites
 
-* Python 3.5+. 
-* (Optional) Anaconda. I usually use Anaconda for managing my Python environments, which explains why the guide uses conda commands in the following.
-* (Optional) Spark 2+ referenced inside a `SPARK_HOME` environment variable for Spark Streaming.
+- [Anaconda](https://www.anaconda.com/)
+- (Optional) Spark 2+ referenced inside a `SPARK_HOME` environment variable for Spark Streaming.
 
 The following guide has Windows users in mind.
 
@@ -33,6 +32,20 @@ If you wish to use decktape for exporting your slides as a Reveal.js slidedeck w
 npm install
 ```
 
+## (Optional) Spark
+
+This section is needed if you plan to use native Spark Streaming.
+
+Download Spark and unzip it in `bin/spark`.
+
+In `conf/log4j.properties`, set `log4j.rootCategory=WARN, console`.
+
+In `conf/spark-defaults.conf`, set
+
+```
+spark.sql.shuffle.partitions   4
+```
+
 ## Invoke task list
 
 ```
@@ -47,20 +60,6 @@ Available tasks:
   notebook        Launch jupyter notebook to edit notebook files. Add a string of arguments through the -a/--args flag and --spark_home for path to Spark
 ```
 
-## Download Spark
-
-Download Spark and unzip it in `bin/spark`.
-
-## Configure Spark
-
-In `conf/log4j.properties`, set `log4j.rootCategory=WARN, console`.
-
-In `conf/spark-defaults.conf`, set 
-
-```
-spark.sql.shuffle.partitions   4
-```
-
 ## Run notebook for editing
 
 Run a Jupyter Notebook session : `invoke notebook`.
@@ -73,7 +72,7 @@ The invoke command will automatically send `bin/spark` as the `SPARK_HOME` envir
 
 ### nbconvert
 
-We use a personalized nbconvert template to generate a correct Reveal.js HTML file from the notebook file.
+We use a personalized nbconvert template `pyspark-interactive-lecture.tpl` to generate a correct Reveal.js HTML file from the notebook file.
 
 ```
 $ invoke nbconvert -h
@@ -97,15 +96,3 @@ Options:
 ### decktape
 
 Run the following command to run decktape on a background Jupyter notebook: `invoke decktape`
-
-NB : [There is a fix to apply beforehand in RISE 5.1 + Decktape 2.6+](https://github.com/astefanutti/decktape/issues/110#issuecomment-345217070) :
-
-```
-Never mind!
-I was just typing the incorrect URL as input to decktape rise.
-So, the fix that I propose (i.e., replacing "start_livereveal" with "RISE" in the rise.js file) actually makes decktape 2.5.0 and RISE 5.1.0 work nicely.
-Hope this helps!
-
-Thanks,
-Gabriele
-```

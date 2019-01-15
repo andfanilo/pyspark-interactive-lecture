@@ -11973,11 +11973,11 @@ a.anchor-link {
         <div>
             <p><b>SparkContext</b></p>
 
-            <p><a href="http://10.24.212.224:4040">Spark UI</a></p>
+            <p><a href="http://EFR02426.fr01.awl.atosorigin.net:4040">Spark UI</a></p>
 
             <dl>
               <dt>Version</dt>
-                <dd><code>v2.2.1</code></dd>
+                <dd><code>v2.3.2</code></dd>
               <dt>Master</dt>
                 <dd><code>local[*]</code></dd>
               <dt>AppName</dt>
@@ -12074,7 +12074,7 @@ a.anchor-link {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>PythonRDD[1] at RDD at PythonRDD.scala:48</pre>
+<pre>PythonRDD[1] at RDD at PythonRDD.scala:52</pre>
 </div>
 
 </div>
@@ -12200,7 +12200,7 @@ a.anchor-link {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>PythonRDD[5] at RDD at PythonRDD.scala:48</pre>
+<pre>PythonRDD[5] at RDD at PythonRDD.scala:52</pre>
 </div>
 
 </div>
@@ -12276,7 +12276,7 @@ a.anchor-link {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>PythonRDD[8] at RDD at PythonRDD.scala:48</pre>
+<pre>PythonRDD[8] at RDD at PythonRDD.scala:52</pre>
 </div>
 
 </div>
@@ -12318,7 +12318,7 @@ a.anchor-link {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>PythonRDD[8] at RDD at PythonRDD.scala:48
+<pre>PythonRDD[8] at RDD at PythonRDD.scala:52
 </pre>
 </div>
 </div>
@@ -12360,7 +12360,7 @@ a.anchor-link {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>PythonRDD[9] at RDD at PythonRDD.scala:48
+<pre>PythonRDD[9] at RDD at PythonRDD.scala:52
 </pre>
 </div>
 </div>
@@ -12402,7 +12402,7 @@ a.anchor-link {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>b&#39;(4) PythonRDD[10] at RDD at PythonRDD.scala:48 []\n |  PythonRDD[8] at RDD at PythonRDD.scala:48 []\n |  ParallelCollectionRDD[7] at parallelize at PythonRDD.scala:489 []&#39;
+<pre>b&#39;(4) PythonRDD[10] at RDD at PythonRDD.scala:52 []\n |  PythonRDD[8] at RDD at PythonRDD.scala:52 []\n |  ParallelCollectionRDD[7] at parallelize at PythonRDD.scala:194 []&#39;
 </pre>
 </div>
 </div>
@@ -12977,11 +12977,11 @@ a.anchor-link {
         <div>
             <p><b>SparkContext</b></p>
 
-            <p><a href="http://10.24.212.224:4040">Spark UI</a></p>
+            <p><a href="http://EFR02426.fr01.awl.atosorigin.net:4040">Spark UI</a></p>
 
             <dl>
               <dt>Version</dt>
-                <dd><code>v2.2.1</code></dd>
+                <dd><code>v2.3.2</code></dd>
               <dt>Master</dt>
                 <dd><code>local[*]</code></dd>
               <dt>AppName</dt>
@@ -13246,9 +13246,9 @@ only showing top 3 rows
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>== Physical Plan ==
-*Project [Name#15, Sex#16]
-+- *Filter (isnotnull(Sex#16) &amp;&amp; (Sex#16 = male))
-   +- *FileScan csv [Name#15,Sex#16] Batched: false, Format: CSV, Location: InMemoryFileIndex[file:/C:/workspaceperso/pyspark-interactive-lecture/notebooks/data/titanic.csv], PartitionFilters: [], PushedFilters: [IsNotNull(Sex), EqualTo(Sex,male)], ReadSchema: struct&lt;Name:string,Sex:string&gt;
+*(1) Project [Name#13, Sex#14]
++- *(1) Filter (isnotnull(Sex#14) &amp;&amp; (Sex#14 = male))
+   +- *(1) FileScan csv [Name#13,Sex#14] Batched: false, Format: CSV, Location: InMemoryFileIndex[file:/C:/workspaceperso/pyspark-interactive-lecture/notebooks/data/titanic.csv], PartitionFilters: [], PushedFilters: [IsNotNull(Sex), EqualTo(Sex,male)], ReadSchema: struct&lt;Name:string,Sex:string&gt;
 </pre>
 </div>
 </div>
@@ -13369,14 +13369,14 @@ only showing top 8 rows
 <pre>+--------+----------+--------------------+
 |Survived|prediction|         probability|
 +--------+----------+--------------------+
-|       0|       0.0|[0.94189369125263...|
-|       1|       1.0|[0.21883383407637...|
-|       1|       1.0|[0.46619780756453...|
-|       1|       1.0|[0.02089552238805...|
-|       0|       0.0|[0.87832770415448...|
-|       0|       0.0|[0.84656818503583...|
-|       0|       0.0|[0.66412205718598...|
-|       0|       0.0|[0.86223713039307...|
+|       0|       0.0|[0.93723569612445...|
+|       1|       1.0|[0.23975801975801...|
+|       1|       1.0|[0.42648431234970...|
+|       1|       1.0|           [0.0,1.0]|
+|       0|       0.0|[0.87363635258396...|
+|       0|       0.0|[0.91090696075539...|
+|       0|       0.0|[0.66858158547972...|
+|       0|       0.0|[0.81329892365306...|
 +--------+----------+--------------------+
 only showing top 8 rows
 
@@ -13426,14 +13426,14 @@ only showing top 8 rows
 <pre>+--------+----------+--------------------+
 |Survived|prediction|         probability|
 +--------+----------+--------------------+
-|       0|       0.0|[0.94189369125263...|
-|       1|       1.0|[0.21883383407637...|
-|       1|       1.0|[0.46619780756453...|
-|       1|       1.0|[0.02089552238805...|
-|       0|       0.0|[0.87832770415448...|
-|       0|       0.0|[0.84656818503583...|
-|       0|       0.0|[0.66412205718598...|
-|       0|       0.0|[0.86223713039307...|
+|       0|       0.0|[0.93723569612445...|
+|       1|       1.0|[0.23975801975801...|
+|       1|       1.0|[0.42648431234970...|
+|       1|       1.0|           [0.0,1.0]|
+|       0|       0.0|[0.87363635258396...|
+|       0|       0.0|[0.91090696075539...|
+|       0|       0.0|[0.66858158547972...|
+|       0|       0.0|[0.81329892365306...|
 +--------+----------+--------------------+
 only showing top 8 rows
 
