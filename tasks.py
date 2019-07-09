@@ -57,7 +57,7 @@ def nbconvert(ctx, serve=False, font_awesome_url='https://use.fontawesome.com/re
     cmd.append('--SlidesExporter.reveal_url_prefix={}'.format(reveal_url_prefix))
     cmd.append('--SlidesExporter.reveal_theme={}'.format(theme))
     cmd.append('--SlidesExporter.reveal_transition={}'.format(transition))
-    cmd.append('--output-dir=static/')
+    cmd.append('--output-dir=docs/')
     cmd.append('--output=index')
     cmd.append('--template=pyspark-interactive-lecture.tpl')
     cmd.append('notebooks/pyspark.ipynb')
