@@ -16,8 +16,9 @@ The following guide has Windows users in mind.
 We provide you with a `environment.yml` which Anaconda can use to create a Python environment named `pyspark-interactive-lecture`.
 
 ```
-conda env create -f environment.yml
-activate pyspark-interactive-lecture
+conda create -n pyspark-interactive-lecture python=3.7 pip-tools
+conda activate pyspark-interactive-lecture
+pip install -r requirements.txt
 ```
 
 After installation, you should get access to `invoke` in a GNU terminal, and be able to see all defined tasks for the project with `invoke -l`.

@@ -15,7 +15,7 @@ def clean(ctx):
 
 
 @task
-def downloadSpark(ctx, url='https://archive.apache.org/dist/spark/spark-2.3.2/spark-2.3.2-bin-without-hadoop.tgz'):
+def downloadSpark(ctx, url='https://archive.apache.org/dist/spark/spark-2.4.4/spark-2.4.4-bin-without-hadoop.tgz'):
     """Download Spark archive in bin/"""
     bin_folder = Path('bin/')
     bin_folder.mkdir_p()
